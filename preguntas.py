@@ -11,6 +11,13 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
+from itertools import count
+from posixpath import sep
+import pprint
+from ast import Num
+from turtle import clear
+
+pp = pprint.PrettyPrinter()
 
 def pregunta_01():
     """
@@ -48,8 +55,35 @@ def pregunta_02():
     ]
 
     """
-    return
-
+    with open("data.csv", "r") as file:
+        datos=file.readlines()
+    
+    datos=[f.replace("\n", "") for f in datos]
+    datos=[f.split("\t") for f in datos]
+        
+    contA = 0
+    contB = 0
+    contC = 0
+    contD = 0
+    contE = 0
+    for x in datos:
+       print(x[0]) 
+       if x[0]=="A":
+           contA = contA + 1
+       if x[0] =="B":
+           contB = contB + 1
+       if x[0] =="C":
+           contC = contC + 1
+       if x[0] =="D":
+           contD = contD + 1
+       if x [0] =="E":
+           contE = contE + 1
+    
+    pregunta_02=[("A",contA,),("B",contB),("C",contC),("D",contD),("E",contE)]
+    print(pregunta_02)
+    return 
+    
+print(pregunta_02())
 
 def pregunta_03():
     """
@@ -60,9 +94,9 @@ def pregunta_03():
     [
         ("A", 53),
         ("B", 36),
-        ("C", 27),
+        ("C", 27)7,
         ("D", 31),
-        ("E", 67),
+        ("E", 6),
     ]
 
     """
@@ -110,7 +144,6 @@ def pregunta_05():
 
     """
     return
-
 
 def pregunta_06():
     """
