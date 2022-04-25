@@ -62,7 +62,7 @@ def pregunta_02():
     contD = 0
     contE = 0
     for x in datos:
-       print(x[0]) 
+       x[0]
        if x[0]=="A":
            contA = contA + 1
        if x[0] =="B":
