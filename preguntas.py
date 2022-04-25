@@ -80,9 +80,8 @@ def pregunta_02():
            contE = contE + 1
     
     pregunta_02=[("A",contA,),("B",contB),("C",contC),("D",contD),("E",contE)]
-    print(pregunta_02)
-    return 
-    
+
+    return pregunta_02
 print(pregunta_02())
 
 def pregunta_03():
