@@ -11,12 +11,7 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
-from itertools import count
-from posixpath import sep
 import pprint
-from ast import Num
-from turtle import clear
-
 pp = pprint.PrettyPrinter()
 
 def pregunta_01():
@@ -80,8 +75,10 @@ def pregunta_02():
            contE = contE + 1
     
     pregunta_02=[("A",contA,),("B",contB),("C",contC),("D",contD),("E",contE)]
+    print(pregunta_02)
 
-    return pregunta_02
+    return
+
 print(pregunta_02())
 
 def pregunta_03():
