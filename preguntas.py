@@ -23,7 +23,6 @@ def pregunta_01():
     214
 
     """
-
     with open("data.csv", "r") as file:
         datos=file.readlines()
     
@@ -64,7 +63,6 @@ def pregunta_02():
         lista_vocales.append(mi_tupla)
 
     return sorted(set(lista_vocales))
-
 
 def pregunta_03():
     """
