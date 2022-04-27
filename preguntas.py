@@ -48,21 +48,34 @@ def pregunta_02():
     ]
 
     """
-    import csv
-    with open("data.csv", newline='') as f:
-        datos=csv.reader(f, delimiter='\t')
-        colums= list(datos)
-    
-    lista_vocales=[]
-    vouels=[]
-    for vouel in colums:
-        vouels.append(vouel[0])
-    
-    for i in vouels:
-        mi_tupla=(i, vouels.count(i))
-        lista_vocales.append(mi_tupla)
+    with open("data.csv", "r") as file:
+        datos=file.readlines()
+    datos=[f.replace("\n", "") for f in datos]
+    datos=[f.split("\t") for f in datos]
 
-    return sorted(set(lista_vocales))
+    """print(datos)"""
+    A=0
+    B=0
+    C=0
+    D=0
+    E=0
+    
+    for lista in datos:
+        lista[0]
+        if lista[0]=="A":
+            A=A+1
+        if lista[0]=="B":
+            B=B+1
+        if lista[0]=="C":
+            C=C+1
+        if lista[0]=="D":
+            D=D+1
+        if lista[0]=="E":
+            E=E+1
+
+    Solucion2=[("A", A),("B", B),("C", C),("D", D),("E", E)]
+
+    return Solucion2
 
 def pregunta_03():
     """
@@ -79,8 +92,34 @@ def pregunta_03():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        datos=file.readlines()
+    
+    datos=[f.replace("\n", "") for f in datos]
+    datos=[f.split("\t") for f in datos]
 
+    """print(datos)"""
+
+    sumA=0
+    sumB=0
+    sumC=0
+    sumD=0
+    sumE=0
+
+    for lista in datos:
+        if lista[0]=="A":
+            sumA=sumA+ int(lista[1])
+        if lista[0]=="B":
+            sumB=sumB+ int(lista[1])
+        if lista[0]=="C":
+            sumC=sumC+ int(lista[1])
+        if lista[0]=="D":
+            sumD=sumD+ int(lista[1])
+        if lista[0]=="E":
+            sumE=sumE+ int(lista[1])
+    Solucion3=[("A", sumA),("B", sumB),("C", sumC),("D", sumD),("E", sumE)]
+   
+    return Solucion3
 
 def pregunta_04():
     """
@@ -104,6 +143,7 @@ def pregunta_04():
     ]
 
     """
+    
     return
 
 
