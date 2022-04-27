@@ -33,8 +33,6 @@ def pregunta_01():
     columna2=sum([int(f[1]) for f in datos])
    
     return columna2
-    
-print(pregunta_01())
 
 def pregunta_02():
     """
@@ -67,7 +65,6 @@ def pregunta_02():
 
     return sorted(set(lista_vocales))
 
-print(pregunta_02())
 
 def pregunta_03():
     """
