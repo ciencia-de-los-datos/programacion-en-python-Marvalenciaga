@@ -12,6 +12,7 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 """
 import pprint
+from tkinter.tix import COLUMN
 pp = pprint.PrettyPrinter()
 
 def pregunta_01():
@@ -50,34 +51,21 @@ def pregunta_02():
     ]
 
     """
-    with open("data.csv", "r") as file:
-        datos=file.readlines()
+    import csv
+    with open("data.csv", newline='') as f:
+        datos=csv.reader(f, delimiter='\t')
+        colums= list(datos)
     
-    datos=[f.replace("\n", "") for f in datos]
-    datos=[f.split("\t") for f in datos]
-        
-    contA = 0
-    contB = 0
-    contC = 0
-    contD = 0
-    contE = 0
-    for x in datos:
-       x[0]
-       if x[0]=="A":
-           contA = contA + 1
-       if x[0] =="B":
-           contB = contB + 1
-       if x[0] =="C":
-           contC = contC + 1
-       if x[0] =="D":
-           contD = contD + 1
-       if x [0] =="E":
-           contE = contE + 1
+    lista_vocales=[]
+    vouels=[]
+    for vouel in colums:
+        vouels.append(vouel[0])
     
-    pregunta_02=[("A",contA,),("B",contB),("C",contC),("D",contD),("E",contE)]
-    print(pregunta_02)
+    for i in vouels:
+        mi_tupla=(i, vouels.count(i))
+        lista_vocales.append(mi_tupla)
 
-    return
+    return sorted(set(lista_vocales))
 
 print(pregunta_02())
 
