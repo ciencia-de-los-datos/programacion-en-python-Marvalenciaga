@@ -11,8 +11,6 @@ Utilice el archivo `data.csv` para resolver las preguntas.
 
 
 """
-
-
 def pregunta_01():
     """
     Retorne la suma de la segunda columna.
@@ -21,8 +19,15 @@ def pregunta_01():
     214
 
     """
-    return
+    with open("data.csv", "r") as file:
+        datos=file.readlines()
+    
+    datos=[f.replace("\n", "") for f in datos]
+    datos=[f.split("\t") for f in datos]
 
+    columna1=sum([int(f[1]) for f in datos])
+   
+    return columna1
 
 def pregunta_02():
     """
@@ -39,8 +44,34 @@ def pregunta_02():
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        datos=file.readlines()
+    datos=[f.replace("\n", "") for f in datos]
+    datos=[f.split("\t") for f in datos]
 
+    """print(datos)"""
+    A=0
+    B=0
+    C=0
+    D=0
+    E=0
+    
+    for lista in datos:
+        lista[0]
+        if lista[0]=="A":
+            A=A+1
+        if lista[0]=="B":
+            B=B+1
+        if lista[0]=="C":
+            C=C+1
+        if lista[0]=="D":
+            D=D+1
+        if lista[0]=="E":
+            E=E+1
+
+    Solucion2=[("A", A),("B", B),("C", C),("D", D),("E", E)]
+
+    return Solucion2
 
 def pregunta_03():
     """
@@ -51,14 +82,40 @@ def pregunta_03():
     [
         ("A", 53),
         ("B", 36),
-        ("C", 27),
+        ("C", 27)7,
         ("D", 31),
-        ("E", 67),
+        ("E", 6),
     ]
 
     """
-    return
+    with open("data.csv", "r") as file:
+        datos=file.readlines()
+    
+    datos=[f.replace("\n", "") for f in datos]
+    datos=[f.split("\t") for f in datos]
 
+    """print(datos)"""
+
+    sumA=0
+    sumB=0
+    sumC=0
+    sumD=0
+    sumE=0
+
+    for lista in datos:
+        if lista[0]=="A":
+            sumA=sumA+ int(lista[1])
+        if lista[0]=="B":
+            sumB=sumB+ int(lista[1])
+        if lista[0]=="C":
+            sumC=sumC+ int(lista[1])
+        if lista[0]=="D":
+            sumD=sumD+ int(lista[1])
+        if lista[0]=="E":
+            sumE=sumE+ int(lista[1])
+    Solucion3=[("A", sumA),("B", sumB),("C", sumC),("D", sumD),("E", sumE)]
+   
+    return Solucion3
 
 def pregunta_04():
     """
@@ -82,8 +139,26 @@ def pregunta_04():
     ]
 
     """
-    return
+    from operator import itemgetter
 
+    with open('data.csv', 'r') as f:
+        data = f.readlines()
+
+    data = [row.split('\t') for row in data]
+    data = [row[2] for row in data]
+    months = [row[5:7] for row in data]
+
+    mesesCantidad = {}
+
+    for mes in months:
+        if mes in mesesCantidad.keys():
+            mesesCantidad[mes] = mesesCantidad[mes] + 1
+        else:   
+            mesesCantidad[mes] = 1 # {"01": 1, "02": 1}
+
+    tuplas = [(key, val) for key, val in mesesCantidad.items()]
+    resultado = sorted(tuplas, key=itemgetter(0))
+    return resultado
 
 def pregunta_05():
     """
@@ -100,8 +175,28 @@ def pregunta_05():
     ]
 
     """
-    return
+    from operator import itemgetter
 
+    with open('data.csv', 'r') as f:
+        data = f.readlines()
+
+
+    data = [row.split('\t') for row in data]
+    data = [row[:2] for row in data]
+    
+    resultados = {}
+   
+    for letra, valor in data:
+        valor = int(valor)
+        if letra in resultados.keys():
+            resultados[letra].append(valor)
+        else:
+            resultados[letra] = [valor] #{"E":[1,2,3,4,5,6,6,7,8,9]}
+
+    tupla = [(key, max(valor), min(valor)) for key, valor in resultados.items()]
+    tupla = sorted(tupla, key=itemgetter(0))
+        
+    return tupla
 
 def pregunta_06():
     """
@@ -125,7 +220,31 @@ def pregunta_06():
     ]
 
     """
-    return
+    from operator import itemgetter
+
+    with open('data.csv', 'r') as f:
+        data = f.readlines()
+
+    data = [row.split('\t') for row in data]
+    data = [row[4] for row in data]
+    data = [row[:-1] for row in data]
+    data = [row.split(',') for row in data]
+
+    resultado = dict()
+
+    for row in data:
+        for dupla in row:
+            key, valor = dupla.split(':')
+            valor = int(valor)
+            if key in resultado.keys():
+                resultado[key].append(valor)
+            else:
+                resultado[key] = [valor]
+
+    tupla = [(key, min(valor), max(valor)) for key, valor in resultado.items()]
+    tupla = sorted(tupla, key=itemgetter(0))
+
+    return tupla
 
 
 def pregunta_07():
@@ -149,8 +268,26 @@ def pregunta_07():
     ]
 
     """
-    return
+    from operator import itemgetter
 
+    with open('data.csv', 'r') as file:
+        data = file.readlines()
+
+    data = [row.split('\t') for row in data]
+    data = [(row[1], row[0]) for row in data]
+
+    resultado = dict()
+    for key , value in data:
+        key = int(key)
+        if key in resultado.keys():
+            resultado[key].append(value)
+        else:
+            resultado[key] = [value] # {"0": [a,d,b,g,h,rt,ry,e]}
+
+    tupla = [(key, value) for key, value in resultado.items()]
+    tupla = sorted(tupla, key=itemgetter(0))
+
+    return tupla
 
 def pregunta_08():
     """
@@ -174,8 +311,26 @@ def pregunta_08():
     ]
 
     """
-    return
+    from operator import itemgetter
 
+    with open('data.csv', 'r') as file:
+        data = file.readlines()
+
+    data = [row.split('\t') for row in data]
+    data = [(row[1], row[0]) for row in data]
+
+    resultado = dict()
+    for key , value in data:
+        key = int(key)
+        if key in resultado.keys():
+            resultado[key].append(value)
+        else:
+            resultado[key] = [value]
+
+    tupla = [(key, sorted(list(set(value)))) for key, value in resultado.items()]
+    tupla = sorted(tupla, key=itemgetter(0))
+
+    return tupla
 
 def pregunta_09():
     """
@@ -197,8 +352,30 @@ def pregunta_09():
     }
 
     """
-    return
+    from operator import itemgetter
 
+    with open('data.csv', 'r') as f:
+        data = f.readlines()
+
+    data =[row.split('\t') for row in data]
+    data =[row[4].strip('\n') for row in data]
+    data =[row.split(',') for row in data]
+    
+    duplas = list()
+
+    for row in data:
+        for dupla in row:
+            key, value = dupla.split(':')
+            duplas.append(key)        
+
+
+    tuplas = {row:duplas.count(row) for row in duplas}
+    tuplas = sorted(tuplas.items())
+    
+    res = dict(tuplas)
+
+    return res
+    
 
 def pregunta_10():
     """
@@ -216,10 +393,16 @@ def pregunta_10():
         ("E", 3, 3),
     ]
 
-
     """
-    return
+    from operator import itemgetter
 
+    with open('data.csv', 'r') as f:
+        data = f.readlines()
+
+    data = [row.split('\t') for row in data]
+    data = [(row[0],len(row[3].split(',')),len(row[4].split(','))) for row in data]
+
+    return data
 
 def pregunta_11():
     """
@@ -237,10 +420,27 @@ def pregunta_11():
         "g": 35,
     }
 
-
     """
-    return
+    with open('data.csv', 'r') as f:
+        data = f.readlines()
 
+    data = [row.split('\t') for row in data]
+    data = [(row[1], row[3]) for row in data]
+
+    resultado = dict()
+    for key, value in data:
+        value = value.split(',')
+        for letter in value:
+            key = int(key)
+            if letter in resultado.keys():
+                resultado[letter] += key
+            else:
+                resultado[letter] = key
+
+    resultado = sorted(resultado.items())
+    resultado = dict(resultado)
+
+    return resultado
 
 def pregunta_12():
     """
@@ -257,4 +457,28 @@ def pregunta_12():
     }
 
     """
-    return
+    from operator import itemgetter
+
+    with open('data.csv', 'r') as f:
+        data = f.readlines()
+
+    data =[row.split('\t') for row in data]
+    data =[(row[0], row[4].strip('\n')) for row in data]
+    data =[(row1, row2.split(',')) for row1, row2 in data]
+    
+    tuples = dict()
+
+    for letter, values in data:
+        for duple in values:
+            duple = duple.split(':')
+            duple[1] = int(duple[1])
+            if letter in tuples.keys():
+                tuples[letter].append(duple[1])
+            else:
+                tuples[letter] = [duple[1]]
+    
+    tuples = [(key, sum(values)) for key, values in tuples.items()]
+    tuples = sorted(tuples, key=itemgetter(0))
+    resultado = dict(tuples)
+
+    return resultado
